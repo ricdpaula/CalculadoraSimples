@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metas -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <!-- Links -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/vue.js"></script>
+  </head>
+  <body>
+    <div class="container" id="calculadora">
+      <h2>Calculadora simples</h2>
+      <small id="subTitle"
+        >Estudo VueJs<br /><code>*Apenas operações simples.</code></small
+      >
+      <div class="jumbotron" name="calculadora">
+        <!-- Visor -->
+        <input
+          class="form-control"
+          v-bind:value="'&rArr;' + ' ' + this.visor.join('')"
+          v-if="this.visor.length < 8"
+          disabled
+        />
+        <div class="grid-btn">
+          <!-- Botões númericos -->
+          <component-numerico v-bind:valor="1"> </component-numerico>
+          <component-numerico v-bind:valor="2"> </component-numerico>
+          <component-numerico v-bind:valor="3"> </component-numerico>
+          <component-numerico v-bind:valor="4"> </component-numerico>
+          <component-numerico v-bind:valor="5"> </component-numerico>
+          <component-numerico v-bind:valor="6"> </component-numerico>
+          <component-numerico v-bind:valor="7"> </component-numerico>
+          <component-numerico v-bind:valor="8"> </component-numerico>
+          <component-numerico v-bind:valor="9"> </component-numerico>
+          <component-numerico v-bind:valor="0"> </component-numerico>
+          <!-- Botões operadores -->
+          <component-operador
+            v-bind:operador="operadorSoma"
+          ></component-operador>
+          <component-operador
+            v-bind:operador="operadorSub"
+          ></component-operador>
+          <component-operador
+            v-bind:operador="operadorDiv"
+          ></component-operador>
+          <component-operador
+            v-bind:operador="operadorMult"
+          ></component-operador>
+          <button class="btn btn-light" @click="reset()">C</button>
+          <small id="resTitle">Saber resultado:</small>
+          <button class="btn btn-success btn-block" @click="efetuar()">
+            =
+          </button>
+        </div>
+      </div>
+      <center>
+        <small>DailyFrontEnd | Ricardo de Paula Silva &copy; 2020</small>
+      </center>
+    </div>
+    <script>
+      // Vue componentes
+      Vue.component("component-numerico", {
+        props: ["valor"],
+        template:
+          '<button @click="addNum()"" class="btn btn-primary">{{valor}}</button>',
+        methods: {
+          addNum: function() {
+            var valorBtn = this.valor;
+            calculadoraVue.visor.push(valorBtn);
+          }
+        }
+      });
+      Vue.component("component-operador", {
+        props: ["operador"],
+        template:
+          '<button @click="addOpera()" class="btn btn-danger">{{operador}}</button>',
+        methods: {
+          addOpera: function() {
+            var valorOp = this.operador;
+            console.log(valorOp);
+            calculadoraVue.visor.push(valorOp);
+          }
+        }
+      });
+      // Vue raíz do projeto
+      var calculadoraVue = new Vue({
+        el: "#calculadora",
+        data: {
+          visor: [],
+          operadorSoma: "+",
+          operadorSub: "-",
+          operadorDiv: "/",
+          operadorMult: "*"
+        },
+        methods: {
+          efetuar: function() {
+            var juntarNum = this.visor.join(" ");
+            var calcularNum = eval(juntarNum);
+            this.visor.length = 0;
+            this.visor.push(calcularNum);
+          },
+          reset: function() {
+            this.visor.length = 0;
+            this.visor.push("");
+            this.visor.length = 0;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

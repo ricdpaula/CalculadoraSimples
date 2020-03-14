@@ -1,0 +1,41 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .container h2 {
+    text-align: center; }
+  .container #subTitle {
+    margin-bottom: 30px;
+    text-align: center; }
+  .container #resTitle {
+    color: white;
+    margin-top: 12px;
+    margin-bottom: 6px; }
+  .container .jumbotron {
+    width: 230px;
+    height: auto;
+    background-image: linear-gradient(to bottom right, #2d2d2d, #0f0f0f);
+    padding: 25px;
+    border-radius: 12px; }
+    .container .jumbotron input {
+      margin-bottom: 25px;
+      background-image: linear-gradient(to bottom right, #1e805a, #2c6944);
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-family: "verdana"; }
+    .container .jumbotron .grid-btn {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; }
+      .container .jumbotron .grid-btn button {
+        margin: 3px;
+        font-size: 1rem;
+        font-family: "verdana"; }
+
+/*# sourceMappingURL=style.css.map */

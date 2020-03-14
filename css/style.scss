@@ -1,0 +1,62 @@
+// Variaveis
+// Mixins
+// Encadeamentos
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    text-align: center;
+  }
+
+  #subTitle {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #resTitle {
+    color: white;
+    margin-top: 12px;
+    margin-bottom: 6px;
+  }
+
+  .jumbotron {
+    width: 230px;
+    height: auto;
+    background-image: linear-gradient(to bottom right, #2d2d2d, #0f0f0f);
+    padding: 25px;
+    border-radius: 12px;
+
+    input {
+      margin-bottom: 25px;
+      background-image: linear-gradient(
+        to bottom right,
+        rgb(30, 128, 90),
+        rgb(44, 105, 68)
+      );
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-family: "verdana";
+    }
+
+    .grid-btn {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      button {
+        margin: 3px;
+        font-size: 1rem;
+        font-family: "verdana";
+      }
+    }
+  }
+}

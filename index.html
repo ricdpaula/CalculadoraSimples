@@ -20,8 +20,8 @@
         <!-- Visor -->
         <input
           class="form-control"
-          v-bind:value="'&rArr;' + ' ' + this.visor.join('')"
-          v-if="this.visor.length < 8"
+          v-model="numeroTeclado"
+          v-if="this.numeroTeclado.length < 13"
           disabled
         />
         <div class="grid-btn">
@@ -65,11 +65,10 @@
       Vue.component("component-numerico", {
         props: ["valor"],
         template:
-          '<button @click="addNum()"" class="btn btn-primary">{{valor}}</button>',
+          '<button @click="addNum()" class="btn btn-primary">{{valor}}</button>',
         methods: {
           addNum: function() {
-            var valorBtn = this.valor;
-            calculadoraVue.visor.push(valorBtn);
+            calculadoraVue.numeroTeclado += this.valor;
           }
         }
       });
@@ -79,9 +78,7 @@
           '<button @click="addOpera()" class="btn btn-danger">{{operador}}</button>',
         methods: {
           addOpera: function() {
-            var valorOp = this.operador;
-            console.log(valorOp);
-            calculadoraVue.visor.push(valorOp);
+            calculadoraVue.numeroTeclado += this.operador;
           }
         }
       });
@@ -89,23 +86,20 @@
       var calculadoraVue = new Vue({
         el: "#calculadora",
         data: {
-          visor: [],
           operadorSoma: "+",
           operadorSub: "-",
           operadorDiv: "/",
-          operadorMult: "*"
+          operadorMult: "*",
+          numeroTeclado: ""
         },
         methods: {
           efetuar: function() {
-            var juntarNum = this.visor.join(" ");
-            var calcularNum = eval(juntarNum);
-            this.visor.length = 0;
-            this.visor.push(calcularNum);
+            var calcularNum = eval(this.numeroTeclado);
+            this.numeroTeclado = calcularNum;
+            console.log(calcularNum);
           },
           reset: function() {
-            this.visor.length = 0;
-            this.visor.push("");
-            this.visor.length = 0;
+            this.numeroTeclado = "";
           }
         }
       });

@@ -1,4 +1,4 @@
-# calculadorasimples
+# calculadora
 Estudo VueJs | Calculadora Simples
 
 Projeto: Calculadora VueJs
